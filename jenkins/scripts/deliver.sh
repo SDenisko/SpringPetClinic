@@ -20,11 +20,11 @@ echo 'extracts the value of the <version/> element within <project/> instead.'
 set -x
 VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"`
 set +x
-pwd
-ls -al
-mv target/${NAME}-${VERSION}.jar /tmp/
+#pwd
+#ls -al
+#mv target/${NAME}-${VERSION}.jar /tmp/
 #java -jar /home/mrbit/petclinic/${NAME}-${VERSION}.jar
 #echo 'The following command runs and outputs the execution of your Java'
 #echo 'application (which Jenkins built using Maven) to the Jenkins UI.'
-#set -x
-#java -jar target/${NAME}-${VERSION}.jar
+set -x
+java -jar target/${NAME}-${VERSION}.jar
