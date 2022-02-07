@@ -12,6 +12,7 @@ pipeline {
             steps {
                 sh 'mvn clean package -X'
                 sh 'mvn -B -X -DskipTests clean package'
+                sh 'cp *.jar /tmp'
             }
         }
         stage('Test') {
