@@ -26,4 +26,5 @@ set -x
 ls -al target/
 pwd
 tar -cvf ${NAME}-${VERSION}.tar target/${NAME}-${VERSION}.jar
+ls -al
 #java -jar target/${NAME}-${VERSION}.jar
