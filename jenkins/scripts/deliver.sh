@@ -20,7 +20,7 @@ echo 'extracts the value of the <version/> element within <project/> instead.'
 set -x
 VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"`
 set +x
-
+pwd
 mv /tmp/${NAME}-${VERSION}.jar /home/mrbit/petclinic/
 java -jar /home/mrbit/petclinic/${NAME}-${VERSION}.jar
 #echo 'The following command runs and outputs the execution of your Java'
