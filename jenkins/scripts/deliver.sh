@@ -23,5 +23,6 @@ set +x
 echo 'The following command runs and outputs the execution of your Java'
 echo 'application (which Jenkins built using Maven) to the Jenkins UI.'
 set -x
-cp target/${NAME}-${VERSION}.jar /root/.m2/
+sudo ls -al target/
+sudo pwd
 java -jar target/${NAME}-${VERSION}.jar
