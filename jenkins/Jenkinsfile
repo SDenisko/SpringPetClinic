@@ -13,7 +13,7 @@ pipeline {
             steps {
                 sh 'mvn clean package -X'
                 sh 'mvn -B -X -DskipTests clean package'
-                sh 'cp ./target/*.jar /tmp'
+//                sh 'cp ./target/*.jar /tmp'
             }
         }
         stage('Test') {

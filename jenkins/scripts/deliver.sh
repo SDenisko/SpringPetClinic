@@ -25,6 +25,5 @@ echo 'The following command runs and outputs the execution of your Java'
 echo 'application (which Jenkins built using Maven) to the Jenkins UI.'
 set -x
 ls -al target/
-pwd
-cp *.jar /home/mrbit/
+cp ./target/*.jar /tmp
 #java -jar target/${NAME}-${VERSION}.jar
