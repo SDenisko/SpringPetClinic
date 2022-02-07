@@ -3,7 +3,7 @@ pipeline {
        docker {
             image 'maven:3-alpine'
 //            args '-v /$HOME/.m2:/root/.m2'
-            args '-v /tmp/jenkins-docker:/tmp'
+            args '-v /tmp/jenkins-docker:/tmp/jenkins-docker'
             reuseNode true
 //            args '-v /tmp/from_docker/:/root/.m2'
         }
