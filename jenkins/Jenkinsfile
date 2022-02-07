@@ -2,7 +2,7 @@ pipeline {
     agent {
        docker {
             image 'maven:3-alpine'
-//            args '-v /root/.m2:/root/.m2'
+            args '-v /root/.m2:/root/.m2'
             args '-v /tmp:/tmp'
             reuseNode true
         }
@@ -12,6 +12,7 @@ pipeline {
             steps {
                 sh 'mvn clean package -X'
                 sh 'mvn -B -X -DskipTests clean package'
+                sh 'cp ./target/*.jar /tmp/'
             }
         }
         stage('Test') {
