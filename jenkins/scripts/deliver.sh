@@ -25,6 +25,6 @@ echo 'application (which Jenkins built using Maven) to the Jenkins UI.'
 set -x
 ls -al target/
 pwd
-tar -cvf target/${NAME}-${VERSION}.jar *.tar
+tar -cvf target/*.jar test-${VERSION}.tar
 ls -al
 #java -jar target/${NAME}-${VERSION}.jar
