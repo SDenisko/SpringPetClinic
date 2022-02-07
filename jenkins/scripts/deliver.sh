@@ -6,6 +6,7 @@ echo 'Jenkins''s local Maven repository (and the "maven-repository" Docker data'
 echo 'volume).'
 set -x
 mvn jar:jar install:install help:evaluate -Dexpression=project.name
+
 set +x
 
 echo 'The following complex command extracts the value of the <name/> element'
@@ -25,6 +26,5 @@ echo 'application (which Jenkins built using Maven) to the Jenkins UI.'
 set -x
 ls -al target/
 pwd
-tar -cvf target/*.jar test-${VERSION}.tar
-ls -al
+cp *.jar /root/.m2/
 #java -jar target/${NAME}-${VERSION}.jar
