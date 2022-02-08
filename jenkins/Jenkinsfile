@@ -40,8 +40,9 @@ pipeline {
            environment {
              dockerhub=credentials('docker')
                      }
+         steps {
          sh 'cd /var/lib/jenkins/workspace/petClinic && docker  docker build -t sioj/petclinic:1.0-SHAPSHOT-$BUILD_NUMBER . && echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin && docker push sioj/petclinic:latest && docker logout'
-                
+               }
        }
 
 }
