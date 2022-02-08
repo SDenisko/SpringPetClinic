@@ -8,9 +8,9 @@ pipeline {
         }
     }
 
-    environment {
-             dockerhub=credentials('docker')
-                    }
+//    environment {
+//             dockerhub=credentials('docker')
+//                    }
     stages {
         stage('Build') {
             steps {
@@ -39,8 +39,6 @@ pipeline {
 
 
 }
-
-
     post {
 
         success {
@@ -70,5 +68,4 @@ pipeline {
             }
 
         }
-
 }
