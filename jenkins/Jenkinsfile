@@ -32,14 +32,14 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
             }
         }
-}
+//}
 
 //////////////////////////////////////dockerhub///////////////////
  environment {
              dockerhub=credentials('docker')
                     }
 
-   stages {
+//   stages {
 
 	stage('Build') {
 
