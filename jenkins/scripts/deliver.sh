@@ -21,9 +21,9 @@ set -x
 VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"`
 set +x
 #pwd
-mkdir /tmp/petclinic_www
-ppp=`ls /tmp | grep petclinic_www`
-mv /tmp/spring-${NAME}-${VERSION}.jar /tmp/${ppp}/
+#mkdir /tmp/petclinic_www
+#ppp=`ls /tmp | grep petclinic_www`
+#mv /tmp/spring-${NAME}-${VERSION}.jar /tmp/${ppp}/
 #java -jar /home/mrbit/petclinic/${NAME}-${VERSION}.jar
 #echo 'The following command runs and outputs the execution of your Java'
 #echo 'application (which Jenkins built using Maven) to the Jenkins UI.'
