@@ -36,7 +36,7 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
             }
         }
-       stage ('build docker image'){
+       stage ('jar to image'){
            environment {
              dockerhub=credentials('docker')
                      }
