@@ -36,7 +36,8 @@ pipeline {
         }
        stage ('jar to image'){
            steps {
-              sh 'docker build -t sioj/petclinic:1.0-SHAPSHOT . '
+              sh "pwd"
+              sh "docker build -t sioj/petclinic:1.0-SHAPSHOT . "
                }
        }
 
@@ -52,12 +53,12 @@ pipeline {
                      }
         stage ('push') {
             steps {
-                sh 'docker push sioj/petclinic:latest'
+                sh "docker push sioj/petclinic:latest"
                   }
                      }
         stage ('logout') {
            steps {
-               sh 'docker logout'
+               sh "docker logout"
                  }
                        }
 
