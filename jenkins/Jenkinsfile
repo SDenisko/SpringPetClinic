@@ -40,12 +40,14 @@ pipeline {
                }
        }
 
-       environment {
-             dockerhub=credentials('docker')
-                    }
+//       environment {
+//             dockerhub=credentials('docker')
+//                    }
        stage ('login') {
           steps {
-             sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'
+          withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub_PSW'), string(credentialsId: 'dockerhub', variable: 'dockerhub_USR')]) {
+      sh "docker login -u ${dockerhub_USR} -p ${dockerhub_PSW}"}
+//             sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'
                 }
                      }
         stage ('push') {
