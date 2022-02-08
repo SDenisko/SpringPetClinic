@@ -7,6 +7,10 @@ pipeline {
             reuseNode true
         }
     }
+
+    environment {
+             dockerhub=credentials('docker')
+                    }
     stages {
         stage('Build') {
             steps {
@@ -65,27 +69,25 @@ pipeline {
 
         }
 //////////////////////////////////////dockerhub///////////////////
- environment {
-             dockerhub=credentials('docker')
-                    }
+
 
    stages {
 
-	stage('Build') {
+	stage('Build docker image') {
 
 			steps {
 				sh 'docker build -t docker build -t sioj/petclinic:1.0-SHAPSHOT-$BUILD_NUMBER .'
 			}
 		}
 
-	stage('Login') {
+	stage('Login to dockerhub') {
 
 			steps {
 				sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'
 			}
 		}
 
-	stage('Push') {
+	stage('Push to dockerhub') {
 
 			steps {
 				sh 'docker push sioj/petclinic:latest'
