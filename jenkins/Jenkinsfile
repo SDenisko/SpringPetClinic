@@ -37,25 +37,35 @@ pipeline {
              dockerhub=credentials('docker')
                     }
 
-        stage('build image')
-         {
-            when{
-                branch "prod"
-             }
-           steps {
-               sh 'docker build -t sioj/petclinic:1.0-SNAPSHOT .'
-             }
-         }
-        stage('pushing to dockerhub')
-         {
-             when {
-              branch "prod"
-              }
-            steps {
-               sh 'docker tag sioj/petclinic:1.0-SNAPSHOT sioj/petclinic:1.0-SNAPSHOT '
-               sh 'docker push sioj/petclinic:1.0-SNAPSHOT'
-               }
-         }
+        stages {
+
+		stage('Build') {
+
+			steps {
+				sh 'docker build -t docker build -t sioj/petclinic:1.0-SHAPSHOT .'
+			}
+		}
+
+		stage('Login') {
+
+			steps {
+				sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'
+			}
+		}
+
+		stage('Push') {
+
+			steps {
+				sh 'docker push sioj/petclinic:latest'
+			}
+		}
+	}
+
+	post {
+		always {
+			sh 'docker logout'
+		}
+	}
 
     post {
 
