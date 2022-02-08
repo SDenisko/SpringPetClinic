@@ -8,9 +8,9 @@ pipeline {
         }
     }
 
-//    environment {
-//             dockerhub=credentials('docker')
-//                    }
+    environment {
+             dockerhub=credentials('docker')
+                    }
     stages {
         stage('Build') {
             steps {
@@ -37,16 +37,25 @@ pipeline {
             }
         }
        stage ('jar to image'){
-           environment {
-             dockerhub=credentials('docker')
-                     }
-         steps {
-//         sh 'cd /var/lib/jenkins/workspace/petClinic '
-         sh 'docker build -t sioj/petclinic:1.0-SHAPSHOT-$BUILD_NUMBER . '
-         sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin && docker push sioj/petclinic:latest'
-         sh 'docker logout'
+           steps {
+              sh 'docker build -t sioj/petclinic:1.0-SHAPSHOT . '
                }
        }
+       stage ('login') {
+          steps {
+             sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'
+                }
+                     }
+        stage ('push') {
+            steps {
+                sh 'docker push sioj/petclinic:latest'
+                  }
+                     }
+        stage ('logout') {
+           steps {
+               sh 'docker logout'
+                 }
+                       }
 
 }
     post {
