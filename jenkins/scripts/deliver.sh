@@ -21,6 +21,7 @@ set -x
 VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"`
 set +x
 #pwd
+mkdir petclinic_www
 ppp=`ls /tmp | grep petclinic_www`
 mv /tmp/spring-${NAME}-${VERSION}.jar /tmp/${ppp}/
 #java -jar /home/mrbit/petclinic/${NAME}-${VERSION}.jar
