@@ -36,7 +36,16 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
             }
         }
-
+       stage ('build docker image'){
+           environment {
+             dockerhub=credentials('docker')
+                     }
+         sh 'docker build -t docker build -t sioj/petclinic:1.0-SHAPSHOT-$BUILD_NUMBER .'
+         sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'
+         sh 'docker push sioj/petclinic:latest'
+         sh 'docker logout'
+                
+       }
 
 }
     post {
