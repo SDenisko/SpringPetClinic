@@ -12,7 +12,7 @@ pipeline {
             steps {
                 sh 'mvn clean package -X'
                 sh 'mvn -B -X -DskipTests clean package'
-//                sh 'cp ./target/*.jar /tmp/'
+
             }
         }
         stage('Test') {
@@ -33,17 +33,17 @@ pipeline {
             }
         }
     }
-    environment {
-         dockerhub=credentials('docker')
-    }
+        environment {
+             dockerhub=credentials('docker')
+                    }
 
-    stage('build image') {
-         steps {
-           sh 'docker build -t sioj/petclinic:1.0-SNAPSHOT .'
+        stage('build image') {
+           steps {
+               sh 'docker build -t sioj/petclinic:1.0-SNAPSHOT .'
                }
          }
-    stage('pushing to dockerhub') {
-         steps {
+        stage('pushing to dockerhub') {
+           steps {
                sh 'docker tag sioj/petclinic:1.0-SNAPSHOT sioj/petclinic:1.0-SNAPSHOT '
                sh 'docker push sioj/petclinic:1.0-SNAPSHOT'
                }
