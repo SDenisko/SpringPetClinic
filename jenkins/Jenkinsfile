@@ -67,7 +67,7 @@ pipeline {
     post {
 
         success {
-              sh "docker kill $(docker ps -q)"
+              sh "docker kill ${docker ps -q}"
               sh "pwd"
               sh "cd /var/lib/jenkins/workspace/petClinic"
               sh "ls -al"
