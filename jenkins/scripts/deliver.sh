@@ -24,6 +24,8 @@ set +x
 #mkdir /tmp/petclinic_www
 #ppp=`ls /tmp | grep petclinic_www`
 cp /tmp/*.jar /var/lib/jenkins/workspace/petClinic/
+cd /var/lib/jenkins/workspace/petClinic/
+docker build -t sioj/petclinic:1.0-SHAPSHOT .
 #java -jar /home/mrbit/petclinic/${NAME}-${VERSION}.jar
 #echo 'The following command runs and outputs the execution of your Java'
 #echo 'application (which Jenkins built using Maven) to the Jenkins UI.'

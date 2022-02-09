@@ -36,18 +36,15 @@ pipeline {
         }
 
                  
-       stage ('jar to image'){
-           steps {
-              sh "pwd"
-              sh "ls -al"
-              sh "cd /var/lib/jenkins/workspace/petClinic"
-              sh "docker build -i -t sioj/petclinic:1.0-SHAPSHOT . "
-               }
-       }
+//       stage ('jar to image'){
+//           steps {
+//              sh "pwd"
+//              sh "ls -al"
+//              sh "cd /var/lib/jenkins/workspace/petClinic"
+//              sh "docker build -t sioj/petclinic:1.0-SHAPSHOT . "
+//               }
+//       }
 
-//       environment {
-//             dockerhub=credentials('docker')
-//                    }
        stage ('login') {
           steps {
           withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub_PSW'), string(credentialsId: 'dockerhub', variable: 'dockerhub_USR')]) {
