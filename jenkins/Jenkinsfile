@@ -38,14 +38,14 @@ pipeline {
 
        stage ('Build Docker image'){
 
-                steps{
+                node{
 //               docker.withRegistry("https://$registry", 'gitlab-jenkins-docker') {
 //                   def app_image = docker.build("sioj/petclinic:latest .")
 //                   app_image.push()
 
 //                       }
 
-                 sh "apk update || apk add docker"
+//                  sh "apk update || apk add docker"
 //              sh "docker build -t sioj/petclinic:1.0-SHAPSHOT . "
 //              sh "pwd"
 //              sh "ls -al"
