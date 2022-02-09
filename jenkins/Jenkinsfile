@@ -45,7 +45,7 @@ pipeline {
 
 //                       }
 
-                sh "sudo apk add docker"
+                sh "RUN apk add docker"
 //              sh "docker build -t sioj/petclinic:1.0-SHAPSHOT . "
 //              sh "pwd"
 //              sh "ls -al"
