@@ -4,7 +4,7 @@ pipeline {
 //            image 'sioj/maven-docker'
             image 'maven:3-alpine'
 //             args '-v /root/.m2:/root/.m2'
-            args '-v /tmp:/tmp' , '-v /root/.m2:/root/.m2'
+            args '-v /tmp:/tmp  /root/.m2:/root/.m2'
             reuseNode true
         }
     }
