@@ -38,10 +38,10 @@ pipeline {
                  
        stage ('Build Docker image'){
             steps {
+               script{
 //               docker.withRegistry("https://$registry", 'gitlab-jenkins-docker') {
-//                  app_image = docker.build("sioj/petclinic:latest .")
-                 docker.build("sioj/petclinic:latest .")
-//}
+                  def app_image = docker.build("sioj/petclinic:latest .")
+                      }
 
 
 //              sh "docker build -t sioj/petclinic:1.0-SHAPSHOT . "
