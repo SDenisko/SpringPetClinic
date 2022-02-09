@@ -39,7 +39,6 @@ pipeline {
        stage ('Build Docker image'){
            steps {
 
-              sh "sudo apk update "
               sh "apk add docker"
               sh "rc-update add docker default"
               sh "/etc/init.d/docker start"
