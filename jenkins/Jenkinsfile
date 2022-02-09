@@ -38,19 +38,19 @@ pipeline {
                  
        stage ('Build Docker image'){
             steps {
-               script{
+//                script{
 //               docker.withRegistry("https://$registry", 'gitlab-jenkins-docker') {
-                  def app_image = docker.build("sioj/petclinic:latest .")
+//                   def app_image = docker.build("sioj/petclinic:latest .")
 //                   app_image.push()
 
-                      }
+//                       }
 
-
+                sh "apt update && apt install docker -y"
 //              sh "docker build -t sioj/petclinic:1.0-SHAPSHOT . "
 //              sh "pwd"
 //              sh "ls -al"
-//               sh "cd /var/lib/jenkins/workspace/petClinic"
-//               sh "docker build -t sioj/petclinic:1.0-SHAPSHOT . "
+//                sh "cd /var/lib/jenkins/workspace/petClinic"
+//                sh "docker build -t sioj/petclinic:1.0-SHAPSHOT . "
                 }
        }
 
