@@ -41,6 +41,8 @@ pipeline {
                script{
 //               docker.withRegistry("https://$registry", 'gitlab-jenkins-docker') {
                   def app_image = docker.build("sioj/petclinic:latest .")
+//                   app_image.push()
+
                       }
 
 
@@ -52,18 +54,19 @@ pipeline {
                 }
        }
 
-//       stage ('login') {
-//          steps {
-//          withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub_PSW'), string(credentialsId: 'dockerhub', variable: 'dockerhub_USR')]) {
-//      sh "docker login -u ${dockerhub_USR} -p ${dockerhub_PSW}"}
-//             sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'
- //               }
- //                    }
- //       stage ('push') {
-   //         steps {
+       stage ('login') {
+          steps {
+             withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub_PSW'), string(credentialsId: 'dockerhub', variable: 'dockerhub_USR')]) {
+             sh "docker login -u ${dockerhub_USR} -p ${dockerhub_PSW}"}
+             sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'
+                }
+                     }
+        stage ('push') {
+            steps {
+                app_image.push()
    //             sh "docker push sioj/petclinic:latest"
-   //               }
-   //                  }
+                  }
+                     }
    //     stage ('logout') {
    //        steps {
    //            sh "docker logout"
