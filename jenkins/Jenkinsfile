@@ -35,7 +35,7 @@ pipeline {
             }
         }
 
-                 
+     node {
        stage ('Build Docker image'){
             steps {
 //                script{
@@ -45,12 +45,12 @@ pipeline {
 
 //                       }
 
-                sh "RUN apk add docker"
+//                 sh "apk add docker"
 //              sh "docker build -t sioj/petclinic:1.0-SHAPSHOT . "
 //              sh "pwd"
 //              sh "ls -al"
 //                sh "cd /var/lib/jenkins/workspace/petClinic"
-//                sh "docker build -t sioj/petclinic:1.0-SHAPSHOT . "
+                sh "docker build -t sioj/petclinic:1.0-SHAPSHOT . "
                 }
        }
 
@@ -74,7 +74,7 @@ pipeline {
    //            sh "docker logout"
    //              }
    //                    }
-
+}
 }
     post {
 
