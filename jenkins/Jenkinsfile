@@ -36,14 +36,23 @@ pipeline {
         }
 
                  
- //      stage ('Build Docker image'){
- //          steps {
+       stage ('Build Docker image'){
+           steps {
+
+              sh "apk update "
+              sh "apk add docker"
+              sh "rc-update add docker default"
+              sh "/etc/init.d/docker start"
+              sh "pwd"
+              sh "cd /var/lib/jenkins/workspace/petClinic"
+              sh "ls -al"
+              sh "docker build -t sioj/petclinic:1.0-SHAPSHOT . "
  //             sh "pwd"
  //             sh "ls -al"
  //             sh "cd /var/lib/jenkins/workspace/petClinic"
  //             sh "docker build -t sioj/petclinic:1.0-SHAPSHOT . "
- //              }
- //      }
+               }
+       }
 
 //       stage ('login') {
 //          steps {
@@ -67,14 +76,7 @@ pipeline {
     post {
 
         success {
-              sh "apk update "
-              sh "apk add docker"
-              sh "rc-update add docker default"
-              sh "/etc/init.d/docker start"
-              sh "pwd"
-              sh "cd /var/lib/jenkins/workspace/petClinic"
-              sh "ls -al"
-              sh "docker build -t sioj/petclinic:1.0-SHAPSHOT . "
+
 
           withCredentials([string(credentialsId: 'botSecret', variable: 'TOKEN'), string(credentialsId: 'chatId', variable: 'CHAT_ID')]) {
           sh  ("""
