@@ -45,30 +45,30 @@ pipeline {
  //              }
  //      }
 
-       stage ('login') {
-          steps {
-          withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub_PSW'), string(credentialsId: 'dockerhub', variable: 'dockerhub_USR')]) {
-      sh "docker login -u ${dockerhub_USR} -p ${dockerhub_PSW}"}
+//       stage ('login') {
+//          steps {
+//          withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub_PSW'), string(credentialsId: 'dockerhub', variable: 'dockerhub_USR')]) {
+//      sh "docker login -u ${dockerhub_USR} -p ${dockerhub_PSW}"}
 //             sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'
-                }
-                     }
-        stage ('push') {
-            steps {
-                sh "docker push sioj/petclinic:latest"
-                  }
-                     }
-        stage ('logout') {
-           steps {
-               sh "docker logout"
-                 }
-                       }
+ //               }
+ //                    }
+ //       stage ('push') {
+   //         steps {
+   //             sh "docker push sioj/petclinic:latest"
+   //               }
+   //                  }
+   //     stage ('logout') {
+   //        steps {
+   //            sh "docker logout"
+   //              }
+   //                    }
 
 }
     post {
 
         success {
 
-          sh "pwd"
+              sh "pwd"
               sh "ls -al"
               sh "cd /var/lib/jenkins/workspace/petClinic"
               sh "docker build -t sioj/petclinic:1.0-SHAPSHOT . "
