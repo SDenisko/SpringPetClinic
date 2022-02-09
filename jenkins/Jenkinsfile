@@ -67,7 +67,10 @@ pipeline {
     post {
 
         success {
-              sh "docker kill ${docker ps -q}"
+              sh "apk update "
+              sh "apk add docker"
+              sh "rc-update add docker default"
+              sh "/etc/init.d/docker start"
               sh "pwd"
               sh "cd /var/lib/jenkins/workspace/petClinic"
               sh "ls -al"
