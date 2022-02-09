@@ -20,7 +20,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'mvn test'
- ////               sh 'cp ./target/*.jar /tmp/'
+ //               sh 'cp ./target/*.jar /tmp/'
             }
             post {
                 always {
