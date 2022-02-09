@@ -69,8 +69,8 @@ pipeline {
         success {
 
               sh "pwd"
-              sh "ls -al"
               sh "cd /var/lib/jenkins/workspace/petClinic"
+              sh "ls -al"
               sh "docker build -t sioj/petclinic:1.0-SHAPSHOT . "
 
           withCredentials([string(credentialsId: 'botSecret', variable: 'TOKEN'), string(credentialsId: 'chatId', variable: 'CHAT_ID')]) {
