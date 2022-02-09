@@ -42,6 +42,7 @@ pipeline {
        stage ('jar to image'){
            steps {
               sh "pwd"
+              sh "ls -al"
               sh "cd /var/lib/jenkins/workspace/petClinic"
               sh "docker build -i -t sioj/petclinic:1.0-SHAPSHOT . "
                }
