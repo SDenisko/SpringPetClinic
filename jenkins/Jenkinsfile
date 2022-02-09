@@ -35,9 +35,9 @@ pipeline {
             }
         }
 
-     node {
+
        stage ('Build Docker image'){
-            steps {
+            node {
 //                script{
 //               docker.withRegistry("https://$registry", 'gitlab-jenkins-docker') {
 //                   def app_image = docker.build("sioj/petclinic:latest .")
@@ -74,7 +74,7 @@ pipeline {
    //            sh "docker logout"
    //              }
    //                    }
-}
+
 }
     post {
 
