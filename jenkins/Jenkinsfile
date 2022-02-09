@@ -63,8 +63,10 @@ pipeline {
                      }
         stage ('push') {
             steps {
+              script{
                 app_image.push()
    //             sh "docker push sioj/petclinic:latest"
+                  }
                   }
                      }
    //     stage ('logout') {
