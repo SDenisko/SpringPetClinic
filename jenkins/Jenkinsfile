@@ -38,7 +38,7 @@ pipeline {
 
        stage ('Build Docker image'){
           steps {
-                node{
+
 //               docker.withRegistry("https://$registry", 'gitlab-jenkins-docker') {
 //                   def app_image = docker.build("sioj/petclinic:latest .")
 //                   app_image.push()
@@ -53,7 +53,7 @@ pipeline {
                 sh "docker build -t sioj/petclinic:1.0-SHAPSHOT . "
                 }
        }
-}
+
        stage ('login') {
           steps {
              withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub_PSW'), string(credentialsId: 'dockerhub', variable: 'dockerhub_USR')]) {
