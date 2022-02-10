@@ -13,6 +13,7 @@ pipeline {
                 sh 'mvn clean package -X'
                 sh 'mvn -B -X -DskipTests clean package'
                 sh 'mvn test'
+
             }
 //         }
 //          stage('Test') {
@@ -33,10 +34,8 @@ pipeline {
 //                 sh'chmod +x ./jenkins/scripts/deliver.sh'
 //                 sh './jenkins/scripts/deliver.sh'
             }
-            }
 
-        stage ('Telegram') {
-           steps {
+
            post {
 
         success {
@@ -64,9 +63,8 @@ pipeline {
           """)
               }
             }
-          }
-          } //post Telegram
-         } //stage Telegram
+          } //post
+          } //stage Deliver
         } //stages
      } //pipeline
      
