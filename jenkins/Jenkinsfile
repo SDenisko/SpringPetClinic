@@ -1,21 +1,20 @@
 pipeline {
-    agent {
-       docker {
-//            image 'sioj/maven-docker'
-            image 'maven:3-alpine'
-            args '-v /tmp:/tmp  -v /root/.m2:/root/.m2'
-            reuseNode true
-        }
-    }
-
-stages {
+  agent none
+  stages {
         stage('Build') {
+          agent {
+             docker{
+                    image 'maven:3-alpine'
+                    args '-v /tmp:/tmp  -v /root/.m2:/root/.m2'
+                    reuseNode true
+                    }
+                 }
             steps {
                 sh 'mvn clean package -X'
                 sh 'mvn -B -X -DskipTests clean package'
             }
-        }
-        stage('Test') {
+//         }
+//         stage('Test') {
             steps {
                 sh 'mvn test'
             }
@@ -24,14 +23,14 @@ stages {
                     junit 'target/surefire-reports/*.xml'
                 }
             }
-        }
-       stage('Deliver') {
+//         }
+//        stage('Deliver') {
             steps {
                 sh'chmod +x ./jenkins/scripts/deliver.sh'
                 sh './jenkins/scripts/deliver.sh'
             }
         }
-    }
+
     post {
 
         success {
@@ -59,6 +58,6 @@ stages {
           """)
               }
             }
-
+          }
         }
      }
