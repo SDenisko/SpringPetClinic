@@ -16,7 +16,7 @@ pipeline {
             sh "cp target/spring-*.jar ./"
             }
                                        }
-   stage('DockerHsub') {
+   stage('DockerHub') {
        agent any
        steps {
                     script {
