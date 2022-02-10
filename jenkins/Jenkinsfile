@@ -32,8 +32,6 @@ pipeline {
                   }
              }
         }
-stage ('telegram'){
-agent any
 post {
        success {
          node {
@@ -65,5 +63,4 @@ post {
               }
             }
           }
-       }
 }
