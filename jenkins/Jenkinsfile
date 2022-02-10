@@ -1,7 +1,7 @@
 pipeline {
     agent none
       stages{
-        stage ('build and test project') {
+        stage('build and test project') {
           agent {
             docker {
 //            image 'sioj/maven-docker'
@@ -17,6 +17,7 @@ pipeline {
                 sh "ls -al"
                 sh "cp target/spring-*.jar ./"
             }
+                                       }
    stage('Docker') {
        agent any
        steps {
@@ -63,5 +64,4 @@ pipeline {
 
         }
      }
-}
 }
