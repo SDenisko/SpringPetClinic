@@ -35,6 +35,7 @@ pipeline {
             }
 
         stage ('Telegram') {
+           steps {
            post {
 
         success {
@@ -62,6 +63,7 @@ pipeline {
           """)
               }
             }
+          }
           } //post Telegram
          } //stage Telegram
         } //stages
