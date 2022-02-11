@@ -1,7 +1,7 @@
 pipeline {
     agent none
       stages{
-        stage('build and test project') {
+        stage('Build and test project') {
           agent {
             docker {
             image 'maven:3-alpine'
@@ -16,7 +16,7 @@ pipeline {
             sh "cp target/spring-*.jar ./"
             }
                                        }
-   stage('DockerHub') {
+   stage('Build and push to the DockerHub') {
        agent any
        steps {
                     script {
@@ -28,7 +28,7 @@ pipeline {
                           }
                                                                                                  }
                   }
-             }
+               }
              }
 
 post {
