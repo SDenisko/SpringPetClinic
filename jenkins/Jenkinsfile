@@ -20,10 +20,10 @@ pipeline {
        agent any
        steps {
                     script {
-                  def app_image = docker.build("sioj/GIT_PetClinic_DockerHub:latest")
+                  def app_image = docker.build("sioj/PetClinic-image:latest")
                   withCredentials([string(credentialsId: 'Dockerhub_token', variable: 'TOKEN')]) {
                   sh "docker login -u sioj -p ${TOKEN} "
-                  sh "docker push sioj/GIT_PetClinic_DockerHub"
+                  sh "docker push sioj/PetClinic-image"
                   sh "docker logout"
                           }
                                                                                                  }
